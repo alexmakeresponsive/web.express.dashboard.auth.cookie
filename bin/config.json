@@ -1,0 +1,13 @@
+{
+  "mongoose": {
+    "uri": "mongodb://localhost:27017/express-auth",
+    "options": {
+      "useNewUrlParser": true,
+      "server": {
+        "socketOptions": {
+          "keepAlive": 1
+        }
+      }
+    }
+  }
+}
