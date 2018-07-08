@@ -3,10 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
-    "mongo:native": "node ./mongoNative.js",
-    "mongo:mongoose": "node ./mongoMongoose.js",
-    "mongoose:createSingle": "node ./models/creators/createSingle.js"
+    "start":                  "node ./bin/www",
+    "mongo:native":           "node ./mongoNative.js",
+    "mongo:mongoose":         "node ./mongoMongoose.js",
+    "mongoose:createSingle":  "node ./models/creators/createSingle.js",
+    "mongoose:createDB":      "node ./models/creators/createDB.js"
   },
   "dependencies": {
     "cookie-parser": "~1.4.3",
