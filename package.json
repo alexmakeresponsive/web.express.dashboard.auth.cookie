@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start":                  "node ./bin/www",
+    "app":                  "node ./bin/www",
     "mongo:native":           "node ./mongoNative.js",
     "mongo:mongoose":         "node ./mongoMongoose.js",
     "mongoose:createSingle":  "node ./models/creators/createSingle.js",
