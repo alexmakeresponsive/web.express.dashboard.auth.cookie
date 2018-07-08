@@ -1,5 +1,14 @@
 {
   "mongoose": {
     "uri": "mongodb://localhost:27017/express-auth"
+  },
+  "session": {
+    "secret": "BoxTableStuff",
+    "key": "sid",
+    "cookie": {
+      "path": "/",
+      "httpOnly": true,
+      "maxAge": null
+    }
   }
 }

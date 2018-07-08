@@ -1,12 +1,16 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var logger = require('morgan');
+var createError   = require('http-errors');
+var express       = require('express');
+var path          = require('path');
+var cookieParser  = require('cookie-parser');
+var bodyParser    = require('body-parser');
+var logger        = require('morgan');
+var config        = require('./bin/config.json');
+var session       = require('express-session');
+var MongoStore    = require('connect-mongo')(session);
+var mongoose      = require('./libs/mongoose');
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var indexRouter    = require('./routes/index');
+var usersRouter    = require('./routes/users');
 var error404Router = require('./routes/404');
 
 var app = express();
@@ -21,6 +25,18 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(bodyParser());
 app.use(cookieParser());
+app.use(session({
+    secret: config.session.secret,
+    key:    config.session.key,
+    cookie: config.session.cookie,
+    store: new MongoStore({
+        mongooseConnection: mongoose.connection
+    })
+}));
+app.use(function(req, res, next) {
+  req.session.numberOfVisits = req.session.numberOfVisits + 1 || 1;
+  // res.send('Visits: ' + req.session.numberOfVisits );
+});
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
