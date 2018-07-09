@@ -13,38 +13,23 @@ router.get('/', function(req, res, next) {
   });
 });
 
-/* GET login page. */
+/* POST login page. */
 router.post('/', function(req, res, next) {
     var username = req.body.username;
     var password = req.body.password;
-    
-    async.waterfall(
-        [
-            function (cb) {
-                User.findOne({ username: username }, cb);
-            },
-            function (user, cb) {
-                if (user) {
-                    if (user.checkPassword(password)) {
-                        cd(null, user)
-                    } else {
-                        next(403);
-                    }
-                } else {
-                    var userNew = new User({ username: username, password: password });
-                    userNew.save(function (err) {
-                        if (err) return next(err);
-                        cb(null, userNew);
-                    });
-                }
+
+    User.authorize(username, password, function(err, user) {
+        if (err) {
+            if (err === 403) {
+                return next(403, 'Wrong username or password');
+            } else {
+                return next(err);
             }
-        ]
-        ,function (err, user) {
-            if (err) return next(err);
-            req.session.user = user._id;
-            res.send({});
         }
-    )
+
+        req.session.user = user._id;
+        res.send({});
+    });
 });
 
 module.exports = router;

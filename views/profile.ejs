@@ -4,21 +4,24 @@
 
 
 <div class="pageWrapper">
-
-
-
     <div class="container">
         <div class="row">
             <div class="col-sm-12 col-lg-8 col-lg-offset-2">
                 <h2><%= title %></h2>
+                <p>
+                    Welcome
+                    <b>
+                        <% if (user) { %>
+                            <%= user.get('username') %> !
+                        <% } %>
+                    </b>
+                </p>
                 <p>
                     This is your personal profile!
                 </p>
             </div>
         </div>
     </div>
-
-
 </div>
 
 

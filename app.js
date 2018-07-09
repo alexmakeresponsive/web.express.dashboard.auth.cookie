@@ -13,6 +13,7 @@ var indexRouter    = require('./routes/index');
 // var usersRouter    = require('./routes/users');
 var error404Router = require('./routes/404');
 var loginRouter = require('./routes/login');
+var logoutRouter = require('./routes/logout');
 // var loginAuthHandler = require('./routes/loginAuth');
 var profileRouter = require('./routes/profile');
 
@@ -41,12 +42,15 @@ app.use(function(req, res, next) {
     // res.send('Visits: ' + req.session.numberOfVisits );
     next();
 });
+app.use(require('./middleware/userLoad'));
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 // app.use('/users', usersRouter);
 app.use('/404', error404Router);
 app.use('/login', loginRouter);
+app.use('/logout', logoutRouter);
 // app.use('/auth', loginAuthHandler);
 app.use('/profile', profileRouter);
 

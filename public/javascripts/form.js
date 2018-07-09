@@ -96,3 +96,37 @@ form.addEventListener('submit' ,function (e) {
     }
 
 });
+
+
+
+//Logout
+var linkLogout = document.querySelector('#linkLogout');
+
+if (linkLogout) {
+    linkLogout.addEventListener('click' ,function (e) {
+        e.preventDefault();
+
+        var xhr      = new XMLHttpRequest();
+        var formData = {};
+        var xhrType;
+        var xhrUrl;
+        xhrType = 'post';
+        xhrUrl  = '/logout';
+
+        xhr.open(xhrType, xhrUrl, false);
+        xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+
+        // 3. Отсылаем запрос
+        console.log(formData);
+        xhr.send(JSON.stringify(formData));
+
+        if (xhr.status === 200) {
+            setTimeout(function () {
+                window.location.href = "/";
+            }, 500);
+        } else {
+            console.log(xhr.status);
+            console.log(xhr.statusText);
+        }
+    });
+}

@@ -1,3 +1,19 @@
-<h1><%= message %></h1>
-<h2><%= error.status %></h2>
-<pre><%= error.stack %></pre>
+<%- partial('./partials/body/bodyBefore.ejs', {titleHead: 'Error'}) -%>
+
+<%- partial('./partials/header/header.ejs') -%>
+
+
+<div class="pageWrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-lg-8 col-lg-offset-2">
+                <h1><%= message %></h1>
+                <h2><%= error.status %></h2>
+                <pre><%= error.stack %></pre>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<%- partial('./partials/body/bodyAfter.ejs') -%>

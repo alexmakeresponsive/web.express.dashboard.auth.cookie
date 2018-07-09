@@ -1,15 +1,31 @@
 <div class="container">
     <div class="row">
         <div class="col-sm-12">
-            <header>
-                <a href="" class="logo">NodeAuth</a>
-                <a href="/" class="button">
-                    <span class="icon-home"></span>
-                </a>
-                <a href="/login" class="button">
-                    Login
-                    <span class="icon-user"></span>
-                </a>
+            <header class="header">
+                <div>
+                    <a href="/" class="logo">NodeAuth</a>
+                    <a href="/" class="button">
+                        <span class="icon-home"></span>
+                    </a>
+                    <% if (user) { %>
+                    <a href="/profile" class="button">
+                        Profile
+                    </a>
+                    <% } %>
+                </div>
+                <div>
+                    <% if (user) { %>
+                    <a href="#" class="button" id="linkLogout">
+                        Logout
+                        <span class="icon-link"></span>
+                    </a>
+                    <% } else { %>
+                    <a href="/login" class="button">
+                        Login
+                        <span class="icon-user"></span>
+                    </a>
+                    <% } %>
+                </div>
             </header>
         </div>
     </div>
