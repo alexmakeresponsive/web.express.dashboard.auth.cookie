@@ -1,11 +1,25 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
-</html>
+<%- partial('./partials/body/bodyBefore.ejs') -%>
+
+<%- partial('./partials/header/header.ejs') -%>
+
+
+<div class="pageWrapper">
+
+
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-lg-8 col-lg-offset-2">
+        <h2><%= title %></h2>
+        <p>
+          Hello! Welcome to simple auth example for nodejs!
+        </p>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+
+<%- partial('./partials/body/bodyAfter.ejs') -%>

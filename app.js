@@ -10,8 +10,10 @@ var MongoStore    = require('connect-mongo')(session);
 var mongoose      = require('./libs/mongoose');
 
 var indexRouter    = require('./routes/index');
-var usersRouter    = require('./routes/users');
+// var usersRouter    = require('./routes/users');
 var error404Router = require('./routes/404');
+var loginRouter = require('./routes/login');
+var profileRouter = require('./routes/profile');
 
 var app = express();
 
@@ -33,15 +35,17 @@ app.use(session({
         mongooseConnection: mongoose.connection
     })
 }));
-app.use(function(req, res, next) {
-  req.session.numberOfVisits = req.session.numberOfVisits + 1 || 1;
-  // res.send('Visits: ' + req.session.numberOfVisits );
-});
+// app.use(function(req, res, next) {
+//     req.session.numberOfVisits = req.session.numberOfVisits + 1 || 1;
+//     res.send('Visits: ' + req.session.numberOfVisits );
+// });
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+// app.use('/users', usersRouter);
 app.use('/404', error404Router);
+app.use('/login', loginRouter);
+app.use('/profile', profileRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

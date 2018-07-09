@@ -1,0 +1,38 @@
+<%- partial('./partials/body/bodyBefore.ejs') -%>
+
+<%- partial('./partials/header/header.ejs') -%>
+
+
+<div class="pageWrapper">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-lg-6 col-lg-offset-3">
+                <form id="form">
+                    <fieldset>
+                        <legend>Login form</legend>
+                        <div>
+                            <label for="input-username">Username</label>
+                            <input name="username" value="" type="text" class="" id="input-username" placeholder="Name">
+                        </div>
+                        <div>
+                            <label for="input-password">Username</label>
+                            <input name="password" value="" type="password" class="" id="input-password" placeholder="Password">
+                        </div>
+                        <div>
+                            <button type="submit" class="" data-loading-text="Sending...">Login</button>
+                        </div>
+                    </fieldset>
+                </form>
+                <div class="cards">
+                    <div id="alertSuccess" class="card success  op0 cardsAnimate"></div>
+                    <div id="alertAlert" class="card error op0 cardsAnimate"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<%- partial('./partials/body/bodyAfter.ejs') -%>

@@ -1,0 +1,42 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+
+.pageWrapper {
+  padding-bottom: 30px;
+}
+
+.cardsAnimate {
+  transition: all 1s;
+}
+
+.op0 {
+  opacity: 0;
+}
+.op1 {
+  opacity: 1;
+}
+
+
+
+.card {
+  position: absolute;
+  /*width: 100%;*/
+  padding: 15px;
+}
+
+.card.success {
+  background-color: #4dd0e1;
+  color: #ffffff;
+}
+
+.cards {
+  width: 100%;
+  position: relative;
+}
